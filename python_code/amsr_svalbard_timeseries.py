@@ -17,9 +17,9 @@ caminho='/litceph/GSdata/G3P/org/amsr'
 files=os.listdir(caminho)
 
 files_he5=[f for f in files if f[-3:]=='he5']
-files_he5
+# files_he5
 
-
+# quit()
 nd_str=sys.argv[1]
 date1_str=sys.argv[2]
 date2_str=sys.argv[3]
@@ -64,10 +64,12 @@ for i in files_he5:
     datexstr=some_string[-12:-4]
     # datex=dt.datetime.strptime(datexstr,'%Y%m%d')
     datex=int(datexstr)
+    print(datex,datexstr)
     if datex < date1:
         continue
     if datex > date2:
         continue
+    
     print(date1,datex,date2)
     for key in f.keys():
       print(key)
