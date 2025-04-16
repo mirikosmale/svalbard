@@ -103,7 +103,7 @@ for i in files_he5:
     iuv_time_pd = pd.DataFrame({'date': [datexstr],'lat': [lat_mais_proxima],'lon': [lon_mais_proxima],'swe_min': [data_svalbard_min],'swe_max': [data_svalbard_max],'swe_mean': [data_svalbard_mean],'swe_median': [data_svalbard_median]})
     iuv_time_pd_ap = iuv_time_pd_ap.append(iuv_time_pd, ignore_index=True)    
     directory_path = outpath
-    file_name = 'amsr_swe_2025_2.csv'
+    file_name = 'amsr_swe_2025_nd'+str(nd)+'.csv'
     iuv_time_pd_ap.to_csv(directory_path +'/'+ file_name, index=True)
     x=x+1
 
