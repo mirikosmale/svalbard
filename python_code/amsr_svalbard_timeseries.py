@@ -37,6 +37,7 @@ if locname == 'Larsbren':
 if locname == 'Svalbardcentre':
     lon_val=19.313383
     lat_val=79.078839
+    # lat=79.078839,lon=19.313383
 
 
 year1 = date1_str[0:4]
@@ -136,7 +137,7 @@ for i in files_he5:
     if nd > 0:
         data_svalbard=data[ind[0]-nd:ind[0]+nd,ind[1]-nd:ind[1]+nd]
         data_svalbard[data_svalbard > 241] = np.nan
-        data_svalbard[data_svalbard <= 0] = np.nan
+        data_svalbard[data_svalbard < 0] = np.nan
         data_svalbard_min=np.nanmin(data_svalbard)
         data_svalbard_max=np.nanmax(data_svalbard)
         data_svalbard_median=np.nanmedian(data_svalbard)
@@ -145,7 +146,7 @@ for i in files_he5:
         data_svalbard=data[ind[0],ind[1]]
         if data_svalbard > 241:
             data_svalbard= np.nan
-        if data_svalbard <= 0:
+        if data_svalbard < 0:
             data_svalbard= np.nan
         data_svalbard_min=data_svalbard
         data_svalbard_max=data_svalbard
@@ -158,7 +159,7 @@ for i in files_he5:
     iuv_time_pd = pd.DataFrame({'date': [datexstr],'lat': [lat_mais_proxima],'lon': [lon_mais_proxima],'swe_min': [data_svalbard_min],'swe_max': [data_svalbard_max],'swe_mean': [data_svalbard_mean],'swe_median': [data_svalbard_median]})
     iuv_time_pd_ap = iuv_time_pd_ap.append(iuv_time_pd, ignore_index=True)    
     directory_path = outpath
-    file_name = 'AMSR_SWE_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'.csv'
+    file_name = 'AMSR_SWE_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'_w0.csv'
     iuv_time_pd_ap.to_csv(directory_path +'/'+ file_name, index=True)
 
 
@@ -177,7 +178,7 @@ name='AMSR'
 datasetflag='SWE'
 # file_name = 'amsr_swe_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'.csv'
 # plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_'+periodname+'_nd'+str(nd)+'_'+locname
-plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)
+plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'_w0'
 print(plotnamebase)
 
 # datetime.date(2020, 12, 31)
