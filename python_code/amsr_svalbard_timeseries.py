@@ -121,7 +121,7 @@ date2=df.dttime.max()
 name='AMSR'
 datasetflag='SWE'
 year1=2023
-year2=2024
+year2=2025
 plotnamebase=directory_path+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_fullyear'
 print(plotnamebase)
 
@@ -141,9 +141,9 @@ print(plotnamebase+'.png')
 plt.xlabel('date')
 plt.gcf().autofmt_xdate()
 ax = plt.gca()
-# ax.set_xlim([year1, year2])
-# date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
-# date2_str=str(year2)+str(12).zfill(2)+str(31).zfill(2)
+ax.set_xlim([year1, year2])
+date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
+date2_str=str(year2)+str(12).zfill(2)+str(31).zfill(2)
 ax.set_xlim([dt.datetime.strptime(date1_str, '%Y%m%d'), dt.datetime.strptime(date2_str, '%Y%m%d')])
 ax.set_xlim([date1, date2])
 ax.grid(True)
