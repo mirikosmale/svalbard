@@ -8,10 +8,11 @@ import h5py
 import datetime
 import pandas as pd
 import datetime as dt
-import datetime as dt
+import sys
 
 # https://medium.com/@gabrielagodinho/a-brief-tutorial-on-how-to-extract-a-time-series-from-multiple-he5-files-1b75382b5e5b
-outpath='/home/users/kosmale'
+# outpath='/home/users/kosmale'
+outpath='/data/kosmale/svalbard/'
 caminho='/litceph/GSdata/G3P/org/amsr'
 files=os.listdir(caminho)
 
@@ -19,12 +20,50 @@ files_he5=[f for f in files if f[-3:]=='he5']
 files_he5
 
 
+nd_str=sys.argv[1]
+date1_str=sys.argv[2]
+date2_str=sys.argv[3]
+locname=sys.argv[4]
+
+# Longyearbreen: 78.174442,15.484520
+if locname == 'Longyearbreen':
+    lon_val=15.484520
+    lat_val=78.174442
+# Larsbren: lat=78.180212,lon=15.913168
+if locname == 'Larsbren':
+    lon_val=15.913168
+    lat_val=78.180212
+# Spitzbergen centre: lat=79.078839,lon=19.313383
+if locname == 'Svalbardcentre':
+    lon_val=19.313383
+    lat_val=79.078839
+
+
+year1 = date1_str[0:4]
+year2 = date2_str[0:4]
+month1 = date1_str[4:6]
+month2 = date2_str[4:6]
+day1 = date1_str[6:8]
+day2 = date2_str[6:8]
+date1=dt.date(year1, month1, day1)
+date2=dt.date(year2, month2, day2)
+# year1=2024
+# year2=2025
+# date1_str=str(year1)+str(8).zfill(2)+str(1).zfill(2)
+# date2_str=str(year2)+str(7).zfill(2)+str(30).zfill(2)
+periodname='new'
+
 iuv_time_pd_ap = pd.DataFrame(columns=['date','lat','lon','swe_min','swe_max','swe_mean','swe_median'])
 x=0
 for i in files_he5:    
     f=h5py.File(caminho+'/'+files_he5[x],mode='r')
     some_string=files_he5[x]
     datexstr=some_string[-12:-4]
+    datex=dt.datetime.strptime(datexstr,'%Y%m%d')
+    if datex < date1:
+        continue
+    if datex > date2:
+        continue
     for key in f.keys():
       print(key)
     PATH_NAME1='HDFEOS/GRIDS/Northern Hemisphere/Data Fields/'
@@ -41,14 +80,6 @@ for i in files_he5:
     data = data0.astype(np.float32)
     lat[lat == np.inf] = np.nan
     lon[lon == np.inf] = np.nan
-    # Longyearbreen: 78.174442,15.484520
-    lon_val=19.313383
-    lat_val=79.078839
-    locname='Svalbardcentre'
-    # locname='Larsbren'
-    # Larsbren: lat=78.180212,lon=15.913168
-    # Spitzbergen centre: lat=79.078839,lon=19.313383
-    # Svalbard: lat=79.078839,lon=19.313383
     dif_latitudes = np.abs(lat - lat_val)    
     dif_longitudes = np.abs(lon - lon_val)    
     distancias = np.sqrt(dif_latitudes**2 + dif_longitudes**2)    
@@ -118,7 +149,7 @@ for i in files_he5:
     iuv_time_pd = pd.DataFrame({'date': [datexstr],'lat': [lat_mais_proxima],'lon': [lon_mais_proxima],'swe_min': [data_svalbard_min],'swe_max': [data_svalbard_max],'swe_mean': [data_svalbard_mean],'swe_median': [data_svalbard_median]})
     iuv_time_pd_ap = iuv_time_pd_ap.append(iuv_time_pd, ignore_index=True)    
     directory_path = outpath
-    file_name = 'amsr_swe_2025_nd'+str(nd)+'_'+locname+'_'+'.csv'
+    file_name = 'AMSR_SWE_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'.csv'
     iuv_time_pd_ap.to_csv(directory_path +'/'+ file_name, index=True)
     x=x+1
 
@@ -136,32 +167,34 @@ date2=df.dttime.max()
 
 name='AMSR'
 datasetflag='SWE'
-year1=2024
-year2=2025
-plotnamebase=directory_path+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_winter_nd'+str(nd)+'_'+locname
+# file_name = 'amsr_swe_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'.csv'
+# plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_'+periodname+'_nd'+str(nd)+'_'+locname
+plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)
 print(plotnamebase)
 
+# datetime.date(2020, 12, 31)
+data_col='b-'
+data_col2='g-'
+data_col3='r-'
 #---------------------------------
 plt.figure()
-year_title='winter '+str(year1)+'-'+str(year2)
+year_title=date1_str+'-'+date2_str
 title=name+' SWE '+year_title
 ytitle='SWE'
 fnameadd='v00'
 fstr='%0.2f'
 ylimit=[0., 100.]
-data_col='b-'
-data_col2='b-'
 # plt.plot(df_loc.date.values,df_loc.swe_product.values,data_col, label="SWE ("+datasetflag+")", linestyle='-', marker='o')
-plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE [mm]", linestyle='None', marker='.')
+# plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_median.values,data_col, label="SWE median [mm]", linestyle='None', marker='.')
 print(plotnamebase+'.png')
 plt.xlabel('date')
 plt.gcf().autofmt_xdate()
 ax = plt.gca()
+
 ax.set_xlim([year1, year2])
 # date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
 # date2_str=str(year2)+str(12).zfill(2)+str(31).zfill(2)
-date1_str=str(year1)+str(8).zfill(2)+str(1).zfill(2)
-date2_str=str(year2)+str(7).zfill(2)+str(30).zfill(2)
 ax.set_xlim([dt.datetime.strptime(date1_str, '%Y%m%d'), dt.datetime.strptime(date2_str, '%Y%m%d')])
 ax.set_xlim([date1, date2])
 ax.grid(True)
@@ -179,17 +212,16 @@ plt.savefig(plotname)
 print('plotted: '+plotname)
 #---------------------------------
 plt.figure()
-year_title='winter '+str(year1)+'-'+str(year2)
+# year_title='winter '+str(year1)+'-'+str(year2)
 title=name+' SWE '+year_title
 ytitle='SWE'
-fnameadd='v10'
+fnameadd='v00mean'
 fstr='%0.2f'
 ylimit=[0., 100.]
-data_col='b-'
-data_col2='c-'
 # plt.plot(df_loc.date.values,df_loc.swe_product.values,data_col, label="SWE ("+datasetflag+")", linestyle='-', marker='o')
-plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE max [mm]", linestyle='None', marker='.')
-plt.plot(df.dttime.values,df.swe_mean.values,data_col2, label="SWE mean [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_min.values,data_col2, label="SWE min [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_max.values,data_col3, label="SWE max [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_mean.values,data_col, label="SWE mean [mm]", linestyle='None', marker='.')
 # plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE [mm]", linestyle='None', marker='.')
 print(plotnamebase+'.png')
 plt.xlabel('date')
@@ -215,19 +247,16 @@ plt.savefig(plotname)
 print('plotted: '+plotname)
 #---------------------------------
 plt.figure()
-year_title='winter '+str(year1)+'-'+str(year2)
+# year_title='winter '+str(year1)+'-'+str(year2)
 title=name+' SWE '+year_title
 ytitle='SWE'
-fnameadd='v20'
+fnameadd='v00median'
 fstr='%0.2f'
 ylimit=[0., 100.]
-data_col='b-'
-data_col2='c-'
-data_col3='g-'
 # plt.plot(df_loc.date.values,df_loc.swe_product.values,data_col, label="SWE ("+datasetflag+")", linestyle='-', marker='o')
-plt.plot(df.dttime.values,df.swe_min.values,data_col3, label="SWE min [mm]", linestyle='None', marker='.')
-plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE max [mm]", linestyle='None', marker='.')
-plt.plot(df.dttime.values,df.swe_median.values,data_col2, label="SWE median [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_min.values,data_col2, label="SWE min [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_max.values,data_col3, label="SWE max [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_median.values,data_col, label="SWE median [mm]", linestyle='None', marker='.')
 # plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE [mm]", linestyle='None', marker='.')
 print(plotnamebase+'.png')
 plt.xlabel('date')
