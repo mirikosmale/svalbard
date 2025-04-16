@@ -19,4 +19,4 @@
 source set_system.sh
 source /data/kosmale/venv/bin/activate
 
-python amsr_svalbard_timeseries.py
+amsr_svalbard_timeseries.py
