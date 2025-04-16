@@ -195,7 +195,7 @@ fstr='%0.2f'
 ylimit=[0., 100.]
 # plt.plot(df_loc.date.values,df_loc.swe_product.values,data_col, label="SWE ("+datasetflag+")", linestyle='-', marker='o')
 # plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE [mm]", linestyle='None', marker='.')
-plt.plot(df.dttime.values,df.swe_median.values,data_col, label="SWE median [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_median.values,data_col, label="SWE [mm]", linestyle='None', marker='.')
 print(plotnamebase+'.png')
 plt.xlabel('date')
 plt.gcf().autofmt_xdate()
