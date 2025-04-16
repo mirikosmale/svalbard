@@ -64,13 +64,14 @@ for i in files_he5:
     datexstr=some_string[-12:-4]
     # datex=dt.datetime.strptime(datexstr,'%Y%m%d')
     datex=int(datexstr)
-    print(datex,datexstr)
+    # print(datex,datexstr)
+    x=x+1
     if datex < date1:
         continue
     if datex > date2:
         continue
     
-    print(date1,datex,date2)
+    # print(date1,datex,date2)
     for key in f.keys():
       print(key)
     PATH_NAME1='HDFEOS/GRIDS/Northern Hemisphere/Data Fields/'
@@ -158,7 +159,6 @@ for i in files_he5:
     directory_path = outpath
     file_name = 'AMSR_SWE_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'.csv'
     iuv_time_pd_ap.to_csv(directory_path +'/'+ file_name, index=True)
-    x=x+1
 
 
 iuv_time_pd_ap.date
