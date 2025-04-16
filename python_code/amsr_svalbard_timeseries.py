@@ -88,7 +88,7 @@ for i in files_he5:
     # iuv_mais_proxima4 = data[indice_mais_proximo]
     # print(datexstr,lat_mais_proxima,lon_mais_proxima,iuv_mais_proxima1,iuv_mais_proxima2,iuv_mais_proxima3,iuv_mais_proxima4)
     ind=indice_mais_proximo
-    nd=4
+    nd=2
     data_svalbard=data[ind[0]-nd:ind[0]+nd,ind[1]-nd:ind[1]+nd]
     data_svalbard[data_svalbard > 241] = np.nan
     data_svalbard[data_svalbard <= 0] = np.nan
@@ -103,7 +103,7 @@ for i in files_he5:
     iuv_time_pd = pd.DataFrame({'date': [datexstr],'lat': [lat_mais_proxima],'lon': [lon_mais_proxima],'swe_min': [data_svalbard_min],'swe_max': [data_svalbard_max],'swe_mean': [data_svalbard_mean],'swe_median': [data_svalbard_median]})
     iuv_time_pd_ap = iuv_time_pd_ap.append(iuv_time_pd, ignore_index=True)    
     directory_path = outpath
-    file_name = 'amsr_swe_2025.csv'
+    file_name = 'amsr_swe_2025_2.csv'
     iuv_time_pd_ap.to_csv(directory_path +'/'+ file_name, index=True)
     x=x+1
 
@@ -123,7 +123,7 @@ name='AMSR'
 datasetflag='SWE'
 year1=2023
 year2=2025
-plotnamebase=directory_path+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_fullyear'
+plotnamebase=directory_path+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_fullyear_nx2'
 print(plotnamebase)
 
 #---------------------------------
