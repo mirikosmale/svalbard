@@ -88,7 +88,7 @@ for i in files_he5:
     # iuv_mais_proxima4 = data[indice_mais_proximo]
     # print(datexstr,lat_mais_proxima,lon_mais_proxima,iuv_mais_proxima1,iuv_mais_proxima2,iuv_mais_proxima3,iuv_mais_proxima4)
     ind=indice_mais_proximo
-    nd=2
+    nd=1
     data_svalbard=data[ind[0]-nd:ind[0]+nd,ind[1]-nd:ind[1]+nd]
     data_svalbard[data_svalbard > 241] = np.nan
     data_svalbard[data_svalbard <= 0] = np.nan
@@ -123,7 +123,7 @@ name='AMSR'
 datasetflag='SWE'
 year1=2023
 year2=2025
-plotnamebase=directory_path+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_fullyear_nx2'
+plotnamebase=directory_path+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_fullyear_nd'+str(nd)
 print(plotnamebase)
 
 #---------------------------------
