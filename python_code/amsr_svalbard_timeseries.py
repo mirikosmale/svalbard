@@ -64,6 +64,7 @@ for i in files_he5:
     datexstr=some_string[-12:-4]
     # datex=dt.datetime.strptime(datexstr,'%Y%m%d')
     datex=int(datexstr)
+    print(date1,datex,date2)
     if datex < date1:
         continue
     if datex > date2:
