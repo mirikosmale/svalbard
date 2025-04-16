@@ -91,6 +91,7 @@ for i in files_he5:
     nd=4
     data_svalbard=data[ind[0]-nd:ind[0]+nd,ind[1]-nd:ind[1]+nd]
     data_svalbard[data_svalbard > 241] = np.nan
+    data_svalbard[data_svalbard < 0] = np.nan
     data_svalbard_min=np.nanmin(data_svalbard)
     data_svalbard_max=np.nanmax(data_svalbard)
     data_svalbard_median=np.nanmedian(data_svalbard)
@@ -172,6 +173,44 @@ data_col2='c-'
 # plt.plot(df_loc.date.values,df_loc.swe_product.values,data_col, label="SWE ("+datasetflag+")", linestyle='-', marker='o')
 plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE max [mm]", linestyle='None', marker='.')
 plt.plot(df.dttime.values,df.swe_mean.values,data_col2, label="SWE mean [mm]", linestyle='None', marker='.')
+# plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE [mm]", linestyle='None', marker='.')
+print(plotnamebase+'.png')
+plt.xlabel('date')
+plt.gcf().autofmt_xdate()
+ax = plt.gca()
+# ax.set_xlim([year1, year2])
+# date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
+# date2_str=str(year2)+str(12).zfill(2)+str(31).zfill(2)
+ax.set_xlim([dt.datetime.strptime(date1_str, '%Y%m%d'), dt.datetime.strptime(date2_str, '%Y%m%d')])
+ax.set_xlim([date1, date2])
+ax.grid(True)
+ax.tick_params(rotation=30, axis='x')  # rotate xticks    
+plt.grid(True) 
+plt.title(title)
+plt.ylabel(ytitle)
+ax.yaxis.set_major_formatter(mpl.ticker.FormatStrFormatter(fstr))
+ax.set_ylim(ylimit)
+# legend = ax.legend(loc='lower right', shadow=True, fontsize='medium')
+legend = ax.legend(loc='upper right', shadow=True, fontsize='medium')
+plt.tight_layout()  # otherwise the right y-label is slightly clipped
+plotname=str(plotnamebase)+"_"+fnameadd+".png"
+plt.savefig(plotname)
+print('plotted: '+plotname)
+#---------------------------------
+plt.figure()
+year_title='winter '+str(year1)+'-'+str(year2)
+title=name+' SWE '+year_title
+ytitle='SWE'
+fnameadd='v2'
+fstr='%0.2f'
+ylimit=[0., 100.]
+data_col='b-'
+data_col2='c-'
+data_col3='g-'
+# plt.plot(df_loc.date.values,df_loc.swe_product.values,data_col, label="SWE ("+datasetflag+")", linestyle='-', marker='o')
+plt.plot(df.dttime.values,df.swe_min.values,data_col3, label="SWE min [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE max [mm]", linestyle='None', marker='.')
+plt.plot(df.dttime.values,df.swe_median.values,data_col2, label="SWE median [mm]", linestyle='None', marker='.')
 # plt.plot(df.dttime.values,df.swe_max.values,data_col, label="SWE [mm]", linestyle='None', marker='.')
 print(plotnamebase+'.png')
 plt.xlabel('date')
