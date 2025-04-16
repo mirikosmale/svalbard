@@ -136,8 +136,8 @@ date2=df.dttime.max()
 
 name='AMSR'
 datasetflag='SWE'
-year1=2023
-year2=2024
+year1=2024
+year2=2025
 plotnamebase=directory_path+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_winter_nd'+str(nd)+'_'+locname
 print(plotnamebase)
 
