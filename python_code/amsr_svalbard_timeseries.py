@@ -89,13 +89,24 @@ for i in files_he5:
     # print(datexstr,lat_mais_proxima,lon_mais_proxima,iuv_mais_proxima1,iuv_mais_proxima2,iuv_mais_proxima3,iuv_mais_proxima4)
     ind=indice_mais_proximo
     nd=0
-    data_svalbard=data[ind[0]-nd:ind[0]+nd,ind[1]-nd:ind[1]+nd]
-    data_svalbard[data_svalbard > 241] = np.nan
-    data_svalbard[data_svalbard <= 0] = np.nan
-    data_svalbard_min=np.nanmin(data_svalbard)
-    data_svalbard_max=np.nanmax(data_svalbard)
-    data_svalbard_median=np.nanmedian(data_svalbard)
-    data_svalbard_mean=np.nanmean(data_svalbard)
+    if nd > 0:
+        data_svalbard=data[ind[0]-nd:ind[0]+nd,ind[1]-nd:ind[1]+nd]
+        data_svalbard[data_svalbard > 241] = np.nan
+        data_svalbard[data_svalbard <= 0] = np.nan
+        data_svalbard_min=np.nanmin(data_svalbard)
+        data_svalbard_max=np.nanmax(data_svalbard)
+        data_svalbard_median=np.nanmedian(data_svalbard)
+        data_svalbard_mean=np.nanmean(data_svalbard)
+    else:
+        data_svalbard=data[ind[0],ind[1]]
+        if data_svalbard > 241:
+            data_svalbard= np.nan
+        if data_svalbard <= 0:
+            data_svalbard= np.nan
+        data_svalbard_min=data_svalbard
+        data_svalbard_max=data_svalbard
+        data_svalbard_median=data_svalbard
+        data_svalbard_mean=data_svalbard
     print(datexstr,lat_mais_proxima,lon_mais_proxima,data_svalbard_min,data_svalbard_max,data_svalbard_median,data_svalbard_mean)
     # x=x+1
     # datapd=str(datestr)
