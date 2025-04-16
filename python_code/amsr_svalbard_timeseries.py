@@ -42,10 +42,10 @@ for i in files_he5:
     lat[lat == np.inf] = np.nan
     lon[lon == np.inf] = np.nan
     # Longyearbreen: 78.174442,15.484520
-    lon_val=15.913168
-    lat_val=78.180212
-    # locname='Svalbardcentre'
-    locname='Larsbren'
+    lon_val=19.313383
+    lat_val=79.078839
+    locname='Svalbardcentre'
+    # locname='Larsbren'
     # Larsbren: lat=78.180212,lon=15.913168
     # Spitzbergen centre: lat=79.078839,lon=19.313383
     # Svalbard: lat=79.078839,lon=19.313383
