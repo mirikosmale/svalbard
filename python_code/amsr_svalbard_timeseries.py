@@ -1,5 +1,3 @@
-source set_system.sh
-source /data/kosmale/venv/bin/activate
 # import libraries
 import os
 import matplotlib as mpl

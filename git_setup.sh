@@ -7,7 +7,9 @@
 # git commit -m "first commit"
 # git branch -M main
 # git remote add origin git@github.com:mirikosmale/svalbard.git
-# git push -u origin main### setup:
+# git push -u origin main
+
+### setup:
 git init  
 #### check remote connection  
 git remote -v  
