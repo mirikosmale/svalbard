@@ -151,7 +151,7 @@ ax.tick_params(rotation=30, axis='x')  # rotate xticks
 plt.grid(True) 
 plt.title(title)
 plt.ylabel(ytitle)
-ax.yaxis.set_major_formatter(ticker.FormatStrFormatter(fstr))
+ax.yaxis.set_major_formatter(mpl.ticker.FormatStrFormatter(fstr))
 ax.set_ylim(ylimit)
 # legend = ax.legend(loc='lower right', shadow=True, fontsize='medium')
 legend = ax.legend(loc='upper right', shadow=True, fontsize='medium')
