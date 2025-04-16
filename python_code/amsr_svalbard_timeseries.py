@@ -45,8 +45,8 @@ month1 = date1_str[4:6]
 month2 = date2_str[4:6]
 day1 = date1_str[6:8]
 day2 = date2_str[6:8]
-# date1=dt.date(int(year1), int( month1), int(day1))
-# date2=dt.date(int(year2), int(month2), int(day2))
+date1d=dt.date(int(year1), int( month1), int(day1))
+date2d=dt.date(int(year2), int(month2), int(day2))
 date1=int(date1_str)
 date2=int(date2_str)
 # date2=dt.date(int(year2), int(month2), int(day2))
@@ -199,11 +199,11 @@ plt.xlabel('date')
 plt.gcf().autofmt_xdate()
 ax = plt.gca()
 
-ax.set_xlim([year1, year2])
+# ax.set_xlim([year1, year2])
 # date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
 # date2_str=str(year2)+str(12).zfill(2)+str(31).zfill(2)
 ax.set_xlim([dt.datetime.strptime(date1_str, '%Y%m%d'), dt.datetime.strptime(date2_str, '%Y%m%d')])
-ax.set_xlim([date1, date2])
+# ax.set_xlim([date1, date2])
 ax.grid(True)
 ax.tick_params(rotation=30, axis='x')  # rotate xticks    
 plt.grid(True) 
@@ -238,7 +238,7 @@ ax = plt.gca()
 # date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
 # date2_str=str(year2)+str(12).zfill(2)+str(31).zfill(2)
 ax.set_xlim([dt.datetime.strptime(date1_str, '%Y%m%d'), dt.datetime.strptime(date2_str, '%Y%m%d')])
-ax.set_xlim([date1, date2])
+# ax.set_xlim([date1, date2])
 ax.grid(True)
 ax.tick_params(rotation=30, axis='x')  # rotate xticks    
 plt.grid(True) 
@@ -273,7 +273,7 @@ ax = plt.gca()
 # date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
 # date2_str=str(year2)+str(12).zfill(2)+str(31).zfill(2)
 ax.set_xlim([dt.datetime.strptime(date1_str, '%Y%m%d'), dt.datetime.strptime(date2_str, '%Y%m%d')])
-ax.set_xlim([date1, date2])
+# ax.set_xlim([date1, date2])
 ax.grid(True)
 ax.tick_params(rotation=30, axis='x')  # rotate xticks    
 plt.grid(True) 
