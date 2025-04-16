@@ -45,8 +45,11 @@ month1 = date1_str[4:6]
 month2 = date2_str[4:6]
 day1 = date1_str[6:8]
 day2 = date2_str[6:8]
-date1=dt.date(int(year1), int( month1), int(day1))
-date2=dt.date(int(year2), int(month2), int(day2))
+# date1=dt.date(int(year1), int( month1), int(day1))
+# date2=dt.date(int(year2), int(month2), int(day2))
+date1=int(date1_str)
+date2=int(date2_str)
+# date2=dt.date(int(year2), int(month2), int(day2))
 # year1=2024
 # year2=2025
 # date1_str=str(year1)+str(8).zfill(2)+str(1).zfill(2)
@@ -59,7 +62,8 @@ for i in files_he5:
     f=h5py.File(caminho+'/'+files_he5[x],mode='r')
     some_string=files_he5[x]
     datexstr=some_string[-12:-4]
-    datex=dt.datetime.strptime(datexstr,'%Y%m%d')
+    # datex=dt.datetime.strptime(datexstr,'%Y%m%d')
+    datex=int(datexstr)
     if datex < date1:
         continue
     if datex > date2:
