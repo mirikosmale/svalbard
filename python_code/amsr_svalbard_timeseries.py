@@ -88,7 +88,7 @@ for i in files_he5:
     # iuv_mais_proxima4 = data[indice_mais_proximo]
     # print(datexstr,lat_mais_proxima,lon_mais_proxima,iuv_mais_proxima1,iuv_mais_proxima2,iuv_mais_proxima3,iuv_mais_proxima4)
     ind=indice_mais_proximo
-    nd=2
+    nd=0
     data_svalbard=data[ind[0]-nd:ind[0]+nd,ind[1]-nd:ind[1]+nd]
     data_svalbard[data_svalbard > 241] = np.nan
     data_svalbard[data_svalbard <= 0] = np.nan
