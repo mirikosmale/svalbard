@@ -91,7 +91,7 @@ for i in files_he5:
     nd=4
     data_svalbard=data[ind[0]-nd:ind[0]+nd,ind[1]-nd:ind[1]+nd]
     data_svalbard[data_svalbard > 241] = np.nan
-    data_svalbard[data_svalbard < 0] = np.nan
+    data_svalbard[data_svalbard <= 0] = np.nan
     data_svalbard_min=np.nanmin(data_svalbard)
     data_svalbard_max=np.nanmax(data_svalbard)
     data_svalbard_median=np.nanmedian(data_svalbard)
@@ -131,7 +131,7 @@ plt.figure()
 year_title='winter '+str(year1)+'-'+str(year2)
 title=name+' SWE '+year_title
 ytitle='SWE'
-fnameadd='v0'
+fnameadd='v00'
 fstr='%0.2f'
 ylimit=[0., 100.]
 data_col='b-'
@@ -165,7 +165,7 @@ plt.figure()
 year_title='winter '+str(year1)+'-'+str(year2)
 title=name+' SWE '+year_title
 ytitle='SWE'
-fnameadd='v1'
+fnameadd='v10'
 fstr='%0.2f'
 ylimit=[0., 100.]
 data_col='b-'
@@ -201,7 +201,7 @@ plt.figure()
 year_title='winter '+str(year1)+'-'+str(year2)
 title=name+' SWE '+year_title
 ytitle='SWE'
-fnameadd='v2'
+fnameadd='v20'
 fstr='%0.2f'
 ylimit=[0., 100.]
 data_col='b-'
