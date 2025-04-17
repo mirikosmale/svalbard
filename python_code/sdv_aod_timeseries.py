@@ -5,11 +5,12 @@ from scipy.io import netcdf #### <--- This is the library to import.
 import numpy as np
 import numpy.ma as ma
 import matplotlib.pyplot as plt
-import pandas as p
 # from colorspace import diverging_hcl
 from datetime import datetime
 from copy import copy
 import sys                
+import pandas as pd
+import matplotlib as mpl
 
 import os
 
