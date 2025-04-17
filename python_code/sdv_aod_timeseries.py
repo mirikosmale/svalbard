@@ -138,10 +138,10 @@ for fname in files_nc:
         data_svalbard_mean=np.nanmean(data_svalbard)
     else:
         data_svalbard=var[index_minlat,index_minlon]
-        if varx > 100:
-            varx= np.nan
-        if varx < 0:
-            varx= np.nan
+        if data_svalbard > 100:
+            data_svalbard= np.nan
+        if data_svalbard < 0:
+            data_svalbard= np.nan
         data_svalbard_min=data_svalbard
         data_svalbard_max=data_svalbard
         data_svalbard_median=data_svalbard
