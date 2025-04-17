@@ -6,7 +6,7 @@ import numpy as np
 import numpy.ma as ma
 import matplotlib.pyplot as plt
 # from colorspace import diverging_hcl
-from datetime import datetime
+import datetime
 from copy import copy
 import sys                
 import pandas as pd
@@ -85,8 +85,8 @@ variable='AOD550_mean'
 x=0
 for fname in files_year:    
     dataset = Dataset(inpath+fname,'r')
-    some_string=fname[0]
-    datexstr=some_string[0:8]   
+    # some_string=fname[0]
+    datexstr=fname[0:8]   
     datex=int(datexstr)
     x=x+1
     var=np.array(dataset.variables[variable][:,:])
