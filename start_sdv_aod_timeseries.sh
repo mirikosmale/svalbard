@@ -19,33 +19,43 @@
 source set_system.sh
 source /data/kosmale/venv/bin/activate
 
-sdv_aod_timeseries.py 2 2023 Svalbardcentre
-sdv_aod_timeseries.py 2 2023 Munich
-sdv_aod_timeseries.py 2 2023 Helsinki
-sdv_aod_timeseries.py 2 2023 Sodankyla
+# sdv_aod_timeseries.py 2 2023 Svalbardcentre
+# sdv_aod_timeseries.py 2 2023 Munich
+# sdv_aod_timeseries.py 2 2023 Helsinki
+# sdv_aod_timeseries.py 2 2023 Sodankyla
 
-sdv_aod_timeseries.py 1 2023 Svalbardcentre
-sdv_aod_timeseries.py 1 2023 Munich
-sdv_aod_timeseries.py 1 2023 Helsinki
-sdv_aod_timeseries.py 1 2023 Sodankyla
+sdv_aod_timeseries.py 1 20200101 20240531 Svalbardcentre
+sdv_aod_timeseries.py 1 20200101 20240531 Munich
+sdv_aod_timeseries.py 1 20200101 20240531 Helsinki
+sdv_aod_timeseries.py 1 20200101 20240531 Sodankyla
 
-sdv_aod_timeseries.py 2 2024 Svalbardcentre
-sdv_aod_timeseries.py 2 2024 Munich
-sdv_aod_timeseries.py 2 2024 Helsinki
-sdv_aod_timeseries.py 2 2024 Sodankyla
+sdv_aod_timeseries.py 2 20200101 20240531 Svalbardcentre
+sdv_aod_timeseries.py 2 20200101 20240531 Munich
+sdv_aod_timeseries.py 2 20200101 20240531 Helsinki
+sdv_aod_timeseries.py 2 20200101 20240531 Sodankyla
 
-sdv_aod_timeseries.py 1 2024 Svalbardcentre
-sdv_aod_timeseries.py 1 2024 Munich
-sdv_aod_timeseries.py 1 2024 Helsinki
-sdv_aod_timeseries.py 1 2024 Sodankyla
+sdv_aod_timeseries.py 3 20200101 20240531 Svalbardcentre
+sdv_aod_timeseries.py 3 20200101 20240531 Munich
+sdv_aod_timeseries.py 3 20200101 20240531 Helsinki
+sdv_aod_timeseries.py 3 20200101 20240531 Sodankyla
 
-sdv_aod_timeseries.py 2 2022 Svalbardcentre
-sdv_aod_timeseries.py 2 2022 Munich
-sdv_aod_timeseries.py 2 2022 Helsinki
-sdv_aod_timeseries.py 2 2022 Sodankyla
+# sdv_aod_timeseries.py 2 2024 Svalbardcentre
+# sdv_aod_timeseries.py 2 2024 Munich
+# sdv_aod_timeseries.py 2 2024 Helsinki
+# sdv_aod_timeseries.py 2 2024 Sodankyla
 
-sdv_aod_timeseries.py 1 2022 Svalbardcentre
-sdv_aod_timeseries.py 1 2022 Munich
-sdv_aod_timeseries.py 1 2022 Helsinki
-sdv_aod_timeseries.py 1 2022 Sodankyla
+# sdv_aod_timeseries.py 1 2024 Svalbardcentre
+# sdv_aod_timeseries.py 1 2024 Munich
+# sdv_aod_timeseries.py 1 2024 Helsinki
+# sdv_aod_timeseries.py 1 2024 Sodankyla
+
+# sdv_aod_timeseries.py 2 2022 Svalbardcentre
+# sdv_aod_timeseries.py 2 2022 Munich
+# sdv_aod_timeseries.py 2 2022 Helsinki
+# sdv_aod_timeseries.py 2 2022 Sodankyla
+
+# sdv_aod_timeseries.py 1 2022 Svalbardcentre
+# sdv_aod_timeseries.py 1 2022 Munich
+# sdv_aod_timeseries.py 1 2022 Helsinki
+# sdv_aod_timeseries.py 1 2022 Sodankyla
 

@@ -12,18 +12,33 @@ import sys
 import pandas as pd
 import matplotlib as mpl
 import datetime as dt
+import glob
 
 import os
 
-nd_str=sys.argv[1]
-year1=sys.argv[2]
+# nd_str=sys.argv[1]
+# year1=sys.argv[2]
 # date1_str=sys.argv[2]
 # date2_str=sys.argv[3]
-locname=sys.argv[3]
+# locname=sys.argv[3]
+nd_str=sys.argv[1]
+date1_str=sys.argv[2]
+date2_str=sys.argv[3]
+locname=sys.argv[4]
 
 outpath='/data/kosmale/svalbard/'
 path='/litceph/GSdata/G3P/org/adv/SDV'
-yyyy=year1
+year1 = date1_str[0:4]
+year2 = date2_str[0:4]
+month1 = date1_str[4:6]
+month2 = date2_str[4:6]
+day1 = date1_str[6:8]
+day2 = date2_str[6:8]
+date1d=dt.date(int(year1), int( month1), int(day1))
+date2d=dt.date(int(year2), int(month2), int(day2))
+date1=int(date1_str)
+date2=int(date2_str)
+# yyyy=year1
 # yyyy='2023'
 # mm='04'
 # dd='30'
@@ -40,10 +55,12 @@ yyyy=year1
 # date1=int(date1_str)
 # date2=int(date2_str)
 
-inpath=path+'/'+'L3/'+yyyy+'/'
-files=os.listdir(inpath)
-files_nc=[f for f in files if f[-2:]=='nc']
-files_year=[f for f in files_nc if f[0:4]==yyyy]
+# inpath=path+'/'+'L3/'+yyyy+'/'
+pattern=path+'/'+'L3/*/*nc'
+files_nc = glob.glob(pattern, recursive=recursive)
+# files=os.listdir(inpath)
+# files_nc=[f for f in files if f[-2:]=='nc']
+# files_year=[f for f in files_nc if f[0:4]==yyyy]
 
 
 
@@ -83,12 +100,17 @@ iuv_time_pd_ap = pd.DataFrame(columns=['date','lat','lon','aod_min','aod_max','a
 variable='AOD550_mean'
 
 x=0
-for fname in files_year:    
-    dataset = Dataset(inpath+fname,'r')
-    # some_string=fname[0]
+# for fname in files_year:    
+for fname in files_nc:    
     datexstr=fname[0:8]   
     datex=int(datexstr)
     x=x+1
+    if datex < date1:
+        continue
+    if datex > date2:
+        continue
+    dataset = Dataset(inpath+fname,'r')
+    # some_string=fname[0]
     var=np.array(dataset.variables[variable][:,:])
     lat = np.array(dataset.variables['latitude'][:])
     lon = np.array(dataset.variables['longitude'][:])
@@ -150,8 +172,8 @@ ymin=0.
 
 # file_name = 'amsr_swe_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'.csv'
 # plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+str(year1)+'_'+str(year2)+'_'+periodname+'_nd'+str(nd)+'_'+locname
-plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+year1+'_'+locname+'_nd'+str(nd)+'_w0'
-plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+year1+'_'+locname+'_nd'+str(nd)
+plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)+'_w0'
+plotnamebase=outpath+'/timeseries_'+'daily'+'_'+name+'_'+datasetflag+'_'+date1_str+'-'+date2_str+'_'+locname+'_nd'+str(nd)
 print(plotnamebase)
 
 
@@ -160,7 +182,7 @@ data_col2='g-'
 data_col3='r-'
 #---------------------------------
 plt.figure()
-year_title=year1
+year_title=date1_str+'-'+date2_str
 title=name+' '+datasetflag+' '+year_title
 ytitle=datasetflag
 fnameadd='v00'
@@ -175,8 +197,8 @@ plt.gcf().autofmt_xdate()
 ax = plt.gca()
 
 # ax.set_xlim([year1, year2])
-date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
-date2_str=str(year1)+str(12).zfill(2)+str(31).zfill(2)
+# date1_str=str(year1)+str(1).zfill(2)+str(1).zfill(2)
+# date2_str=str(year1)+str(12).zfill(2)+str(31).zfill(2)
 ax.set_xlim([dt.datetime.strptime(date1_str, '%Y%m%d'), dt.datetime.strptime(date2_str, '%Y%m%d')])
 # ax.set_xlim([date1, date2])
 ax.grid(True)
