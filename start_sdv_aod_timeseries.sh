@@ -29,20 +29,25 @@ source /data/kosmale/venv/bin/activate
 # sdv_aod_timeseries.py 0 20210801 20240531 Helsinki
 # sdv_aod_timeseries.py 0 20210801 20240531 Sodankyla
 
-sdv_aod_timeseries.py 0 20210101 20211231 Munich
-sdv_aod_timeseries.py 0 20220101 20221231 Munich
-sdv_aod_timeseries.py 0 20230101 20231231 Munich
-sdv_aod_timeseries.py 0 20240101 20241231 Munich
+sdv_aod_timeseries.py 4 20210101 20211231 Svalbardcentre
+sdv_aod_timeseries.py 4 20220101 20221231 Svalbardcentre
+sdv_aod_timeseries.py 4 20230101 20231231 Svalbardcentre
+sdv_aod_timeseries.py 4 20240101 20241231 Svalbardcentre
 
-sdv_aod_timeseries.py 0 20210101 20211231 Helsinki
-sdv_aod_timeseries.py 0 20220101 20221231 Helsinki
-sdv_aod_timeseries.py 0 20230101 20231231 Helsinki
-sdv_aod_timeseries.py 0 20240101 20241231 Helsinki
+# sdv_aod_timeseries.py 0 20210101 20211231 Munich
+# sdv_aod_timeseries.py 0 20220101 20221231 Munich
+# sdv_aod_timeseries.py 0 20230101 20231231 Munich
+# sdv_aod_timeseries.py 0 20240101 20241231 Munich
 
-sdv_aod_timeseries.py 0 20210101 20211231 Sodankyla
-sdv_aod_timeseries.py 0 20220101 20221231 Sodankyla
-sdv_aod_timeseries.py 0 20230101 20231231 Sodankyla
-sdv_aod_timeseries.py 0 20240101 20241231 Sodankyla
+# sdv_aod_timeseries.py 0 20210101 20211231 Helsinki
+# sdv_aod_timeseries.py 0 20220101 20221231 Helsinki
+# sdv_aod_timeseries.py 0 20230101 20231231 Helsinki
+# sdv_aod_timeseries.py 0 20240101 20241231 Helsinki
+
+# sdv_aod_timeseries.py 0 20210101 20211231 Sodankyla
+# sdv_aod_timeseries.py 0 20220101 20221231 Sodankyla
+# sdv_aod_timeseries.py 0 20230101 20231231 Sodankyla
+# sdv_aod_timeseries.py 0 20240101 20241231 Sodankyla
 
 
 # sdv_aod_timeseries.py 1 20210801 20240531 Svalbardcentre
