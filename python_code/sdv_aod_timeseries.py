@@ -101,15 +101,17 @@ variable='AOD550_mean'
 
 x=0
 # for fname in files_year:    
-for fname in files_nc:    
-    datexstr=fname[0:8]   
+for fname in files_nc:
+    basenamex=os.path.splitext(os.path.basename(fname))[0]
+    datexstr=basenamex[0:8]   
     datex=int(datexstr)
     x=x+1
     if datex < date1:
         continue
     if datex > date2:
         continue
-    dataset = Dataset(inpath+fname,'r')
+    # dataset = Dataset(inpath+fname,'r')
+    dataset = Dataset(fname,'r')
     # some_string=fname[0]
     var=np.array(dataset.variables[variable][:,:])
     lat = np.array(dataset.variables['latitude'][:])
