@@ -155,7 +155,8 @@ for fname in files_nc:
     iuv_time_pd = pd.DataFrame({'date': [datexstr],'lat': [lat_mais_proxima],'lon': [lon_mais_proxima],'aod_min': [data_svalbard_min],'aod_max': [data_svalbard_max],'aod_mean': [data_svalbard_mean],'aod_median': [data_svalbard_median]})
     iuv_time_pd_ap = iuv_time_pd_ap.append(iuv_time_pd, ignore_index=True)    
     directory_path = outpath
-    file_name = 'SDV_AOD_'+year1+'_'+locname+'.csv'
+    # file_name = 'SDV_AOD_'+year1+'_'+locname+'.csv'
+    file_name = 'SDV_AOD_'+date1_str+'-'+date2_str+'_'+locname+'.csv'
     iuv_time_pd_ap.to_csv(directory_path +'/'+ file_name, index=True)
    
 
