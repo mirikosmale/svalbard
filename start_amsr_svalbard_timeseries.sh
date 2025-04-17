@@ -19,12 +19,12 @@
 source set_system.sh
 source /data/kosmale/venv/bin/activate
 
-amsr_svalbard_timeseries.py 2 20210501 20250430 Svalbardcentre
-amsr_svalbard_timeseries.py 2 20210501 20250430 Longyearbreen
-amsr_svalbard_timeseries.py 2 20210501 20250430 Larsbren
-amsr_svalbard_timeseries.py 4 20210501 20250430 Svalbardcentre
-amsr_svalbard_timeseries.py 4 20210501 20250430 Longyearbreen
-amsr_svalbard_timeseries.py 4 20210501 20250430 Larsbren
+amsr_svalbard_timeseries.py 2 20211001 20250430 Svalbardcentre
+amsr_svalbard_timeseries.py 2 20211001 20250430 Longyearbreen
+amsr_svalbard_timeseries.py 2 20211001 20250430 Larsbren
+amsr_svalbard_timeseries.py 4 20211001 20250430 Svalbardcentre
+amsr_svalbard_timeseries.py 4 20211001 20250430 Longyearbreen
+amsr_svalbard_timeseries.py 4 20211001 20250430 Larsbren
 # amsr_svalbard_timeseries.py 2 20230801 20240730 Svalbardcentre
 # amsr_svalbard_timeseries.py 2 20240801 20250730 Svalbardcentre
 # amsr_svalbard_timeseries.py 2 20230401 20250730 Svalbardcentre
