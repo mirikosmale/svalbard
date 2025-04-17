@@ -56,8 +56,8 @@ date2=int(date2_str)
 # date2=int(date2_str)
 
 # inpath=path+'/'+'L3/'+yyyy+'/'
-pattern=path+'/'+'L3/*/*nc'
-files_nc = glob.glob(pattern, recursive=recursive)
+pattern=path+'/'+'L3/*/*.nc'
+files_nc = glob.glob(pattern)
 # files=os.listdir(inpath)
 # files_nc=[f for f in files if f[-2:]=='nc']
 # files_year=[f for f in files_nc if f[0:4]==yyyy]
