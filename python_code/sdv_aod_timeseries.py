@@ -84,6 +84,7 @@ variable='AOD550_mean'
 x=0
 for fname in files_year:    
     dataset = Dataset(inpath+fname,'r')
+    some_string=fname[0]
     datexstr=some_string[0:8]   
     datex=int(datexstr)
     x=x+1
